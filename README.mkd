@@ -1,0 +1,4 @@
+PyMyProc
+========
+
+A simple web based viewer for mysql process list.
