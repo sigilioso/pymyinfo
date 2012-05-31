@@ -2,18 +2,19 @@
 
 from flask import Flask
 from flask import render_template
-import MySQLdb
 
-db = MySQLdb.connect('localhost', user='root', passwd='')
-cursor = db.cursor()
+from sqlalchemy import create_engine
+
+engine = create_engine('mysql://root@localhost/', encoding='utf-8')
 
 # Flask Application
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    cursor.execute('SHOW PROCESSLIST')
-    for row in cursor.fetchall():
+    connection = engine.connect()
+    results = connection.execute('show processlist')
+    for row in results.fetchall():
         print row
     return render_template('index.html')
 
