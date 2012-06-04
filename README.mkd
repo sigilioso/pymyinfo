@@ -28,6 +28,6 @@ Installation
 
         python mypyinfo.py
 
-5. To deploy on server see [Flask deployment documentation](http://flask.pocoo.org/docs/deploying/).
+5. To deploy see [Flask deployment documentation](http://flask.pocoo.org/docs/deploying/).
 
 
