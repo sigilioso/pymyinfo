@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MySQL Information</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Information from MySQL Server">
+    <meta name="author" content="Christian Felipe Álvarez">
+
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style> body { padding-top: 60px; }</style>
+    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <style>#interval { width:45px; height:28px; text-align:center; }</style>
+    <link rel="shortcut icon" href="/static/favicon.ico">
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">MySQL Server Information</a>
+          <div class="nav-collapse">
+            <ul class="nav" id="navigation">
+              {% block navlinks %}
+              <li><a href="#">Process list</a></li>
+              <li><a href="#">Configuration Info</a></li>
+              {% endblock %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+    {% block body %}
+    {% endblock %}
+    </div>
+    {% block js_base %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    {% endblock %}
+    {% block js_extra %}
+    {% endblock %}
+  </body>
+</html>

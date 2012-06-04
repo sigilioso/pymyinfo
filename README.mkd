@@ -1,4 +1,31 @@
-PyMyProc
+PyMyInfo
 ========
 
-A simple web based viewer for mysql process list and mysql server information.
+A simple [Flask](http://flask.pocoo.org/) / [jQuery](http://jquery.com/) based **MySQL processes monitor**. The user interface is built with [twitter-bootstrap](http://twitter.github.com/bootstrap/).
+
+Requirements
+------------
+
+- python2.7
+- Flask
+- Jinja2
+- MySQL-python
+
+Installation
+------------
+
+1. Download the source code:
+
+        git clone https://github.com/sigilioso/pymyinfo.git
+
+2. Install the requirements. For example:
+
+        pip install -r < requirements.xt
+
+3. Configure your MySQL settings on `settings.py`.
+
+        python mypyinfo.py
+
+5. To deploy on server see [Flask deployment documentation](http://flask.pocoo.org/docs/deploying/).
+
+

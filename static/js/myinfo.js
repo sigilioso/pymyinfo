@@ -1,12 +1,28 @@
+/*
+ * myinfo.js
+ *
+ * Update and show the MySQL process information.
+ *
+ * The following components are required:
+ *   http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js
+ *   /static/js/jquery.mousewheel.js
+ *   /static/js/jquery.timer.js
+ */
+
 function to_show(field) {
+    // Simple function to show '---' if some field is not provided
     return field ? field : '---';
 }
 
 function update_process_list() {
+    /*
+     * Updates the processlist getting a JSON from the server via AJAX.
+     */
     $.getJSON('/mypci', function(data) {
         var process_list = $('#process_list tbody');
         process_list.empty();
         $.each(data.process_list_info, function(i, q) {
+            // Show processlist processes are not shown
             if(q.Info != 'show processlist') {
                 var row = $('<tr>');
                 row.append($('<td>').append(to_show(q.Id)),
@@ -23,9 +39,13 @@ function update_process_list() {
     });
 }
 
+// Set a timer in order to update the process list
 var timer = $.timer(update_process_list);
 
 function timer_interval() {
+    /*
+     * Checks the time interval value and set it to the timer if it is correct
+     */
     try {
         var control = $(this);
         var interval = parseInt(control.attr('value'));
@@ -44,6 +64,7 @@ function timer_interval() {
     }
 }
 
+// Events for the time's interval controller
 $('#interval').change(timer_interval);
 $('#interval').click(timer_interval);
 $('#interval').keypress(timer_interval);

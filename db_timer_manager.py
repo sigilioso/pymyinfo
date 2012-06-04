@@ -3,8 +3,8 @@
 """
 db_timer_manager.py
 
-A simple Database manager for MySQLdb to easily run queries and keep the 
-database connection opened for a while. 
+A simple Database manager for MySQLdb to easily run queries and keep the
+database connection opened for a while.
 """
 
 import MySQLdb
@@ -22,12 +22,12 @@ class DatabaseTimerManager(object):
             cursorclass=DictCursor):
         """
         args:
-            `host`: host for the database connection.
-            `user`: user for the database connection.
-            `password`: for the database connection.
-            `connection_time`: (default 20) the amount of time which the MySQL 
+            host: host for the database connection.
+            user: user for the database connection.
+            password: for the database connection.
+            connection_time: (default 20) the amount of time which the MySQL 
                 connection will be kept opened after executing a query.
-            `cursorclass`: the MySQLdb cursor class to be used.
+            cursorclass: the MySQLdb cursor class to be used.
         """
         self.__host = host
         self.__user = user
@@ -51,7 +51,7 @@ class DatabaseTimerManager(object):
 
     def __start_timer(self):
         """
-        Creates a new timer and starts it in order to close the database 
+        Creates a new timer and starts it in order to close the database
         connection when it reaches its end.
         """
         self.__timer = Timer(self.__timer.interval, self.__close)

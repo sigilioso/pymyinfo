@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block navlinks %}
+<li><a href="/">Process list</a></li>
+<li class="active"><a href="/configuration">Configuration Information</a></li>
+{% endblock %}
+{% block body %}
+<h1>Configuration</h1>
+<div id="configuration" class="well">
+<dl class="dl-horizontal">
+  <dt>Host</dt> <dd>{{ server_info.hostname }}:{{ server_info.port }}</dd>
+  <dt>Version</dt> <dd>{{ server_info.version }} {{ server_info.comment }} {{ server_info.version_compile_machine }}</dd>
+  <dt>Basedir</dt> <dd>{{ server_info.basedir }}</dd>
+  <dt>Datadir</dt> <dd>{{ server_info.datadir }}</dd>
+  <dt>Default engine</dt> <dd>{{ server_info.default_storage_engine }}</li>
+</dl>
+</div>
+{% endblock %}

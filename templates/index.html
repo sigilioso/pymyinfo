@@ -1,84 +1,39 @@
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>MySQL Information</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Information from MySQL Server">
-    <meta name="author" content="Christian Felipe Álvarez">
-
-    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <style> body { padding-top: 60px; }</style>
-    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-    <style>
-      #interval { width:45px; height:28px; text-align:center; }
-    </style>
-    <link rel="shortcut icon" href="/static/favicon.ico">
-
-  </head>
-  <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">MySQL Server Information</a>
-          <div class="nav-collapse">
-            <ul class="nav" id="navigation">
-              <li class="active"><a href="#">Server</a></li>
-              <li><a href="#">Databases</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <h2>Configuration</h2>
-      <div id="configuration" class="well">
-        <dl class="dl-horizontal">
-          <dt>Host</dt> <dd>{{ server_info.hostname }}:{{ server_info.port }}</dd>
-          <dt>Version</dt> <dd>{{ server_info.version }} {{ server_info.comment }} {{ server_info.version_compile_machine }}</dd>
-          <dt>Basedir</dt> <dd>{{ server_info.basedir }}</dd>
-          <dt>Datadir</dt> <dd>{{ server_info.datadir }}</dd>
-          <dt>Default engine</dt> <dd>{{ server_info.default_storage_engine }}</li>
-        </dl>
-      </div>
-      <h2>Process List</h2>
-      <div id="process" class="well">
-        <form class="form-inline">
-          <div class="control-group">
-            <label for="interval">Set update interval in seconds</label>
-            <input id="interval" type="number" value="0" step="1" />
-          </div>
-        </form>
-        <table id="process_list" class="table table-bordered table-condensed">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>User</th>
-              <th>Host</th>
-              <th>Database</th>
-              <th>State</th>
-              <th>Command</th>
-              <th>Time</th>
-              <th>Info</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/static/js/jquery.mousewheel.js"></script>
-    <script src="/static/js/jquery.timer.js"></script>
-
-    <script src="/static/js/myinfo.js"></script>
+{% extends "base.html" %}
+{% block navlinks %}
+<li class="active"><a href="/">Process list</a></li>
+<li><a href="/configuration">Configuration Info</a></li>
+{% endblock %}
+{% block body %}
+<h1>Process List</h1>
+<div id="process" class="well">
+<form class="form-inline">
+  <div class="control-group">
+    <label for="interval">Set update interval in seconds</label>
+    <input id="interval" type="number" value="0" step="1" />
+  </div>
+</form>
+<table id="process_list" class="table table-bordered table-condensed">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Host</th>
+      <th>Database</th>
+      <th>State</th>
+      <th>Command</th>
+      <th>Time</th>
+      <th>Info</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+{% endblock %}
+{% block js_extra %}
+<script src="/static/js/jquery.mousewheel.js"></script>
+<script src="/static/js/jquery.timer.js"></script>
+<script src="/static/js/myinfo.js"></script>
+{% endblock %}
   </body>
 </html>
