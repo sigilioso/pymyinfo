@@ -24,6 +24,8 @@ Installation
 
 3. Configure your MySQL settings on `settings.py`.
 
+4. To run just type:
+
         python mypyinfo.py
 
 5. To deploy on server see [Flask deployment documentation](http://flask.pocoo.org/docs/deploying/).
