@@ -4,26 +4,38 @@
 <li><a href="/configuration">Configuration Info</a></li>
 {% endblock %}
 {% block body %}
+<style>
+    #interval { width:45px; height:28px; text-align:center; }
+    #kill_pid { height:28px; }
+    #process_list { table-layout: fixed; }
+    #process_list th, #process_list td { overflow: hidden; }
+</style>
+<div class="alert alert-block">
+  <a class="close" data-dismiss="alert" href="#">×</a>
+  <h4 class="alert-heading">Warning!</h4>
+  Best check yo self, you're not...
+</div>
 <h1>Process List</h1>
 <div id="process" class="well">
 <form class="form-inline">
   <div class="control-group">
     <label for="interval">Set update interval in seconds</label>
     <input id="interval" type="number" value="0" step="1" />
+    <a id="stop_button" class="btn btn-inverse" title="Stop"><i class="icon-stop icon-white"></i> Stop</a>
+    <a id="kill_button" class="btn btn-danger" title="Kill Process"><i class="icon-fire icon-white"></i> Kill Process</a>
+    <div class="input-append">
+        <input id="kill_pid" class="input-small" type="text"><a id="kill_now" class="add-on btn btn-danger"><i class="icon-fire icon-white"></i></a>
+    </div>
   </div>
 </form>
-<style>
-    #process_list { table-layout: fixed; }
-    #process_list th, #process_list td { overflow: hidden; }
-</style>
 <table id="process_list" class="table table-bordered table-condensed">
   <thead>
     <tr>
       <th style="width:5%">ID</th>
       <th style="width:10%">User</th>
-      <th style="width:10%">Host</th>
-      <th style="width:10%">Database</th>
-      <th style="width:10%">State</th>
+      <th style="width:12%">Host</th>
+      <th style="width:13%">Database</th>
+      <th style="width:5%">State</th>
       <th style="width:10%">Command</th>
       <th style="width:5%">Time</th>
       <th style="width:40%">Info</th>

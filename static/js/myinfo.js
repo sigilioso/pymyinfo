@@ -64,6 +64,19 @@ function timer_interval() {
     }
 }
 
+//Stop button event: set the counter to 0 and stop timer
+$('#stop_button').click(function() {
+    var control = $('#interval');
+    control.attr('value', '0');
+    timer.stop();
+});
+
+//Try to kill a mysql process
+$('#kill_now').click(function() {
+    var pid = $('#kill_pid').attr('value'); 
+    $.post('/killprocess', {pid: pid});
+});
+
 // Events for the time's interval controller
 $('#interval').change(timer_interval);
 $('#interval').click(timer_interval);

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask
-from flask import render_template
+from flask import render_template, make_response
 from flask import jsonify
+from flask import request
 
 from db_timer_manager import DatabaseTimerManager
 
@@ -40,6 +41,17 @@ def json_mysql_process_list():
     with dbt.execute('show full processlist') as results:
         process_list_info = list(results.fetchall())
     return jsonify(process_list_info=process_list_info)
+
+@app.route('/killprocess', methods=['POST'])
+def kill_process():
+    """
+    Tris to kill the process corresponding to the pid posted.
+    """
+    if request.method == 'POST':
+        pid = request.form['pid']
+        with dbt.execute('kill %s', pid): pass
+        return make_response('', 200)
+    return make_response('', 401)
 
 if __name__ == '__main__':
     app.debug = True
