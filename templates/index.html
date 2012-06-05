@@ -12,17 +12,21 @@
     <input id="interval" type="number" value="0" step="1" />
   </div>
 </form>
+<style>
+    #process_list { table-layout: fixed; }
+    #process_list th, #process_list td { overflow: hidden; }
+</style>
 <table id="process_list" class="table table-bordered table-condensed">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>User</th>
-      <th>Host</th>
-      <th>Database</th>
-      <th>State</th>
-      <th>Command</th>
-      <th>Time</th>
-      <th>Info</th>
+      <th style="width:5%">ID</th>
+      <th style="width:10%">User</th>
+      <th style="width:10%">Host</th>
+      <th style="width:10%">Database</th>
+      <th style="width:10%">State</th>
+      <th style="width:10%">Command</th>
+      <th style="width:5%">Time</th>
+      <th style="width:40%">Info</th>
     </tr>
   </thead>
   <tbody>

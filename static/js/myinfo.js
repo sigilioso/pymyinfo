@@ -23,7 +23,7 @@ function update_process_list() {
         process_list.empty();
         $.each(data.process_list_info, function(i, q) {
             // Show processlist processes are not shown
-            if(q.Info != 'show processlist') {
+            if(q.Info != 'show full processlist') {
                 var row = $('<tr>');
                 row.append($('<td>').append(to_show(q.Id)),
                     $('<td>').append(to_show(q.User)),
