@@ -37,7 +37,7 @@ def json_mysql_process_list():
     Returns the MySQL processlist information by means of a JSON.
     """
     process_list_info = []
-    with dbt.execute('show processlist') as results:
+    with dbt.execute('show full processlist') as results:
         process_list_info = list(results.fetchall())
     return jsonify(process_list_info=process_list_info)
 
