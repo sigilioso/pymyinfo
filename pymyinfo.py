@@ -49,7 +49,10 @@ def kill_process():
     """
     if request.method == 'POST':
         pid = request.form['pid']
-        with dbt.execute('kill %s', pid): pass
+        try :
+            with dbt.execute('kill %s', pid): pass
+        except :
+            pass
         return make_response('', 200)
     return make_response('', 401)
 

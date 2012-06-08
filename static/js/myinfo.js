@@ -71,10 +71,35 @@ $('#stop_button').click(function() {
     timer.stop();
 });
 
-//Try to kill a mysql process
+// Show kill input and hide kill_button
+$('#kill_button').click(function() {
+    $('#kill_input').show(10);
+    $('#kill_button').hide(10);
+});
+
+// Try to kill a mysql process
 $('#kill_now').click(function() {
     var pid = $('#kill_pid').attr('value'); 
-    $.post('/killprocess', {pid: pid});
+    try {
+        if(pid == '' || isNaN(pid)) {
+            throw 'Empty pid';
+        }
+        $.post('/killprocess', {pid: pid});
+        $('#kill_input').hide('fast');
+        var info = $('<div>').attr({id:'info', class:'alert alert-info'});
+        info.append('<a class="close" data-dismiss="alert" href="#">×</a>');
+        info.append('<h4 class="alert-heading">Heads up!</h4>');
+        info.append('The Kill signal has been sended to the process ' + pid + '.');
+        $('h1').after(info);
+        $('#kill_button').show('fast');
+
+    } catch(err) {
+        var info = $('<div>').attr({id:'info', class:'alert alert-error'});
+        info.append('<a class="close" data-dismiss="alert" href="#">×</a>');
+        info.append('<h4 class="alert-heading">Ooops!</h4>');
+        info.append('That was an invalid Pid!');
+        $('h1').after(info);
+    }
 });
 
 // Events for the time's interval controller
