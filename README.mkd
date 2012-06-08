@@ -20,7 +20,7 @@ Installation
 
 2. Install the requirements. For example:
 
-        pip install -r < requirements.xt
+        pip install -r requirements.xt
 
 3. Configure your MySQL settings on `settings.py`.
 
